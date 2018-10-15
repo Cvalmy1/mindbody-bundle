@@ -1,0 +1,35 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    _instanceof:
+        Despark\MindbodyBundle\Service\Soap\Services\ServiceMethodInterface:
+            tags: [ mindbody.service.method ]
+        Despark\MindbodyBundle\Service\Soap\Interfaces\CacheResponseInterface:
+            tags: [ mindbody.cache.response ]
+
+    Despark\MindbodyBundle\Service\:
+        resource: '../../Service/*'
+
+    # Main soap service
+    Despark\MindbodyBundle\Service\SoapService:
+        arguments: [ '@Despark\MindbodyBundle\Service\Soap\SoapAuthentication' ]
+        shared: false
+
+    # Soap Methods
+    Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetEnrollments:
+        arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetEnrollments\GetEnrollmentResponseParser']
+
+    Despark\MindbodyBundle\Service\Soap\Services\SiteService\GetLocations:
+        arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\SiteService\GetLocations\GetLocationsResponseParser', '@cache.app']
+
+
+    # Serializer
+    mindbody.serializer:
+        class: Symfony\Component\Serializer\Serializer
+        factory: Despark\MindbodyBundle\Factory\SerializerFactory::create
+    Despark\MindbodyBundle\Service\SerializerService:
+        arguments: ['@mindbody.serializer']
+

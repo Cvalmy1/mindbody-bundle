@@ -1,0 +1,25 @@
+{
+    "name": "despark/mindbody-bundle",
+    "description": "Mindbody Symfony SDK",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ludmil Simeonov",
+            "email": "lsimeonov@despark.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.2",
+        "ext-soap": "*",
+        "symfony/serializer": "^4.1",
+        "symfony/framework-bundle": "^4.1",
+        "illuminate/support": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Despark\\MindbodyBundle\\": ""
+        }
+    }
+}
