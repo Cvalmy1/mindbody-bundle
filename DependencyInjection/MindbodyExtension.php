@@ -46,6 +46,6 @@ class MindbodyExtension extends Extension
         $soapAuthDefinition->setArguments([$siteId, $apiKey]);
 
         $soapServiceDefinition = $container->getDefinition(SoapService::class);
-        $soapServiceDefinition->setArguments([$soapAuthDefinition]);
+        $soapServiceDefinition->setArguments([$soapAuthDefinition, $config['test_mode']]);
     }
 }

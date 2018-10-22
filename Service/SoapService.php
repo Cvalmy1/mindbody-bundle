@@ -36,19 +36,27 @@ class SoapService implements SoapServiceInterface
      * @var \SoapClient
      */
     private $client;
+    /**
+     * @var bool
+     */
+    private $testMode;
 
     /**
      * SoapService constructor.
+     *
      * @param \Despark\MindbodyBundle\Service\Soap\SoapAuthentication $auth
+     * @param bool $testMode
      */
-    public function __construct(SoapAuthentication $auth)
+    public function __construct(SoapAuthentication $auth, $testMode = false)
     {
         $this->auth = $auth;
+        $this->testMode = $testMode;
     }
 
     /**
      * @param $name
      * @param $arguments
+     *
      * @return mixed
      */
     public function __call($name, $arguments)
@@ -135,6 +143,7 @@ class SoapService implements SoapServiceInterface
 
     /**
      * @param string $service
+     *
      * @return \Despark\MindbodyBundle\Service\SoapServiceInterface
      */
     public function setService(string $service): SoapServiceInterface
@@ -162,6 +171,7 @@ class SoapService implements SoapServiceInterface
 
     /**
      * @param array $arguments
+     *
      * @return array
      */
     private function prepareArguments(array $arguments): array
@@ -171,6 +181,10 @@ class SoapService implements SoapServiceInterface
             $request = new \stdClass();
             // We need to force the same namespace so we hardcoded it
             $request->Request = $argument;
+
+            if($this->testMode){
+                $request->Request->Test = true;
+            }
 
             $argument = new \SoapVar($request, SOAP_ENC_OBJECT);
         }

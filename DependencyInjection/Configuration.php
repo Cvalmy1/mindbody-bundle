@@ -23,6 +23,7 @@ class Configuration implements ConfigurationInterface
         //@formatter:off
         $rootNode
             ->children()
+                ->booleanNode('test_mode')->defaultTrue()->treatNullLike(true)->end()
                 ->arrayNode('credentials')
                 ->addDefaultsIfNotSet()
                 ->children()
