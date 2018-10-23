@@ -22,6 +22,39 @@ trait DefaultResponseTrait
     protected $TotalPageCount;
 
     /**
+     * @return string
+     */
+    abstract function resultRootKey(): string;
+
+    /**
+     * @return string
+     */
+    abstract function resultItemKey(): string;
+
+    /**
+     * @return array
+     */
+    public function getResultItems(): array
+    {
+        $result = [];
+        $rootKey = $this->resultRootKey();
+        $itemKey = $this->resultItemKey();
+
+        if ($rootKey && $itemKey) {
+            if (isset($this->{$rootKey}->{$itemKey})) {
+                if (is_object($this->{$rootKey}->{$itemKey})) {
+                    $result = [$this->{$rootKey}->{$itemKey}];
+                } elseif (is_array($this->{$rootKey}->{$itemKey})) {
+                    $result = $this->{$rootKey}->{$itemKey};
+                }
+            }
+        }
+
+        return $result;
+    }
+
+
+    /**
      * @return bool
      */
     public function hasFailed(): bool

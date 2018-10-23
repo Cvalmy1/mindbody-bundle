@@ -11,6 +11,16 @@ class SimpleResponse implements ResponseInterface
 {
     use DefaultResponseTrait;
 
+    public function resultRootKey(): string
+    {
+        return '';
+    }
+
+    public function resultItemKey(): string
+    {
+        return '';
+    }
+
     /**
      * @return array
      */

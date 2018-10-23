@@ -1,31 +1,27 @@
 <?php
 
-namespace Despark\MindbodyBundle\Service\Soap\Services\SiteService\GetLocations;
+
+namespace Despark\MindbodyBundle\Service\Soap\Services\StaffService\GetStaff;
+
 
 use Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseInterface;
 use Despark\MindbodyBundle\Service\Soap\Traits\DefaultResponseTrait;
 
-/**
- * Class GetLocationsResponse.
- */
-class GetLocationsResponse implements ResponseInterface
+class GetStaffResponse implements ResponseInterface
 {
     use DefaultResponseTrait;
-
 
     /**
      * @return string
      */
     public function resultRootKey(): string
     {
-        return 'Locations';
+        return 'StaffMembers';
     }
 
-    /**
-     * @return string
-     */
     public function resultItemKey(): string
     {
-        return 'Location';
+        return 'Staff';
     }
+
 }

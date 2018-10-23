@@ -25,11 +25,6 @@ services:
     Despark\MindbodyBundle\Service\Soap\Services\SiteService\GetLocations:
         arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\SiteService\GetLocations\GetLocationsResponseParser', '@cache.app']
 
-
-    # Serializer
-    mindbody.serializer:
-        class: Symfony\Component\Serializer\Serializer
-        factory: Despark\MindbodyBundle\Factory\SerializerFactory::create
-    Despark\MindbodyBundle\Service\SerializerService:
-        arguments: ['@mindbody.serializer']
+    Despark\MindbodyBundle\Service\Soap\Services\StaffService\GetStaff:
+        arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\StaffService\GetStaff\GetStaffResponseParser']
 

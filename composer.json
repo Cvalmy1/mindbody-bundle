@@ -13,9 +13,9 @@
     "require": {
         "php": "^7.2",
         "ext-soap": "*",
-        "symfony/serializer": "^4.1",
         "symfony/framework-bundle": "^4.1",
-        "illuminate/support": "^5.7"
+        "illuminate/support": "^5.7",
+        "symfony/validator": "^4.1"
     },
     "autoload": {
         "psr-4": {

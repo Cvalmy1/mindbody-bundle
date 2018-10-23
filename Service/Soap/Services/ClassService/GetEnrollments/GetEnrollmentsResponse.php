@@ -14,24 +14,18 @@ class GetEnrollmentsResponse implements ResponseInterface
     use DefaultResponseTrait;
 
     /**
-     * @var \stdClass
+     * @return string
      */
-    protected $Enrollments;
+    public function resultRootKey(): string
+    {
+        return 'Enrollments';
+    }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getResultItems(): array
+    public function resultItemKey(): string
     {
-        $result = [];
-        if (isset($this->Enrollments->ClassSchedule)) {
-            if (is_object($this->Enrollments->ClassSchedule)) {
-                $result = [$this->Enrollments->ClassSchedule];
-            } elseif (is_array($this->Enrollments->ClassSchedule)) {
-                $result = $this->Enrollments->ClassSchedule;
-            }
-        }
-
-        return $result;
+        return 'ClassSchedule';
     }
 }
