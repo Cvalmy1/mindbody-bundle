@@ -10,100 +10,100 @@ class Staff
 {
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    protected $Id;
 
     /**
      * @var string|null
      */
-    private $name;
+    protected $Name;
 
     /**
      * @var string|null
      */
-    private $firstName;
+    protected $FirstName;
 
     /**
      * @var string|null
      */
-    private $lastName;
+    protected $LastName;
 
     /**
      * @var
      */
-    private $address;
+    protected $Address;
 
     /**
      * @var string|null
      * @Assert\Country()
      */
-    private $country;
+    protected $Country;
     /**
      * @var string|null
      */
-    private $city;
+    protected $City;
 
     /**
      * @var string|null
      */
-    private $mobilePhone;
+    protected $MobilePhone;
 
     /**
      * @var string|null
      */
-    private $homePhone;
+    protected $HomePhone;
 
     /**
      * @var string|null
      */
-    private $postalCode;
+    protected $PostalCode;
 
     /**
      * @var int|null
      */
-    private $sortOrder;
+    protected $SortOrder;
 
     /**
      * @var bool
      */
-    private $appointmentTrn;
+    protected $AppointmentTrn;
 
     /**
      * @var bool
      */
-    private $reservationTrn;
+    protected $ReservationTrn;
 
     /**
      * @var bool
      */
-    private $independentContractor;
+    protected $IndependentContractor;
 
     /**
      * @var bool
      */
-    private $alwaysAllowDoubleBooking;
+    protected $AlwaysAllowDoubleBooking;
 
     /**
      * @var bool
      */
-    private $isMale;
+    protected $isMale;
 
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
-        return $this->id;
+        return $this->Id;
     }
 
     /**
-     * @param int $id
+     * @param int $Id
      */
-    public function setId(int $id): void
+    public function setId(int $Id): void
     {
-        $this->id = $id;
+        $this->Id = $Id;
     }
 
     /**
@@ -111,15 +111,15 @@ class Staff
      */
     public function getName(): string
     {
-        return $this->name;
+        return $this->Name;
     }
 
     /**
-     * @param string $name
+     * @param string $Name
      */
-    public function setName(string $name): void
+    public function setName(string $Name): void
     {
-        $this->name = $name;
+        $this->Name = $Name;
     }
 
     /**
@@ -127,15 +127,15 @@ class Staff
      */
     public function getFirstName(): string
     {
-        return $this->firstName;
+        return $this->FirstName;
     }
 
     /**
-     * @param string $firstName
+     * @param string $FirstName
      */
-    public function setFirstName(string $firstName): void
+    public function setFirstName(string $FirstName): void
     {
-        $this->firstName = $firstName;
+        $this->FirstName = $FirstName;
     }
 
     /**
@@ -143,15 +143,15 @@ class Staff
      */
     public function getLastName(): string
     {
-        return $this->lastName;
+        return $this->LastName;
     }
 
     /**
-     * @param string $lastName
+     * @param string $LastName
      */
-    public function setLastName(string $lastName): void
+    public function setLastName(string $LastName): void
     {
-        $this->lastName = $lastName;
+        $this->LastName = $LastName;
     }
 
     /**
@@ -159,15 +159,15 @@ class Staff
      */
     public function getCountry(): ?string
     {
-        return $this->country;
+        return $this->Country;
     }
 
     /**
-     * @param null|string $country
+     * @param null|string $Country
      */
-    public function setCountry(?string $country): void
+    public function setCountry(?string $Country): void
     {
-        $this->country = $country;
+        $this->Country = $Country;
     }
 
     /**
@@ -175,15 +175,15 @@ class Staff
      */
     public function getCity(): ?string
     {
-        return $this->city;
+        return $this->City;
     }
 
     /**
-     * @param null|string $city
+     * @param null|string $City
      */
-    public function setCity(?string $city): void
+    public function setCity(?string $City): void
     {
-        $this->city = $city;
+        $this->City = $City;
     }
 
     /**
@@ -191,15 +191,15 @@ class Staff
      */
     public function getMobilePhone(): ?string
     {
-        return $this->mobilePhone;
+        return $this->MobilePhone;
     }
 
     /**
-     * @param null|string $mobilePhone
+     * @param null|string $MobilePhone
      */
-    public function setMobilePhone(?string $mobilePhone): void
+    public function setMobilePhone(?string $MobilePhone): void
     {
-        $this->mobilePhone = $mobilePhone;
+        $this->MobilePhone = $MobilePhone;
     }
 
     /**
@@ -207,15 +207,15 @@ class Staff
      */
     public function getHomePhone(): ?string
     {
-        return $this->homePhone;
+        return $this->HomePhone;
     }
 
     /**
-     * @param null|string $homePhone
+     * @param null|string $HomePhone
      */
-    public function setHomePhone(?string $homePhone): void
+    public function setHomePhone(?string $HomePhone): void
     {
-        $this->homePhone = $homePhone;
+        $this->HomePhone = $HomePhone;
     }
 
     /**
@@ -223,15 +223,15 @@ class Staff
      */
     public function getPostalCode(): ?string
     {
-        return $this->postalCode;
+        return $this->PostalCode;
     }
 
     /**
-     * @param null|string $postalCode
+     * @param null|string $PostalCode
      */
-    public function setPostalCode(?string $postalCode): void
+    public function setPostalCode(?string $PostalCode): void
     {
-        $this->postalCode = $postalCode;
+        $this->PostalCode = $PostalCode;
     }
 
     /**
@@ -239,15 +239,15 @@ class Staff
      */
     public function getSortOrder(): ?int
     {
-        return $this->sortOrder;
+        return $this->SortOrder;
     }
 
     /**
-     * @param int|null $sortOrder
+     * @param int|null $SortOrder
      */
-    public function setSortOrder(?int $sortOrder): void
+    public function setSortOrder(?int $SortOrder): void
     {
-        $this->sortOrder = $sortOrder;
+        $this->SortOrder = $SortOrder;
     }
 
     /**
@@ -255,15 +255,15 @@ class Staff
      */
     public function isAppointmentTrn(): bool
     {
-        return $this->appointmentTrn;
+        return $this->AppointmentTrn;
     }
 
     /**
-     * @param bool $appointmentTrn
+     * @param bool $AppointmentTrn
      */
-    public function setAppointmentTrn(bool $appointmentTrn): void
+    public function setAppointmentTrn(bool $AppointmentTrn): void
     {
-        $this->appointmentTrn = $appointmentTrn;
+        $this->AppointmentTrn = $AppointmentTrn;
     }
 
     /**
@@ -271,15 +271,15 @@ class Staff
      */
     public function isReservationTrn(): bool
     {
-        return $this->reservationTrn;
+        return $this->ReservationTrn;
     }
 
     /**
-     * @param bool $reservationTrn
+     * @param bool $ReservationTrn
      */
-    public function setReservationTrn(bool $reservationTrn): void
+    public function setReservationTrn(bool $ReservationTrn): void
     {
-        $this->reservationTrn = $reservationTrn;
+        $this->ReservationTrn = $ReservationTrn;
     }
 
     /**
@@ -287,15 +287,15 @@ class Staff
      */
     public function isIndependentContractor(): bool
     {
-        return $this->independentContractor;
+        return $this->IndependentContractor;
     }
 
     /**
-     * @param bool $independentContractor
+     * @param bool $IndependentContractor
      */
-    public function setIndependentContractor(bool $independentContractor): void
+    public function setIndependentContractor(bool $IndependentContractor): void
     {
-        $this->independentContractor = $independentContractor;
+        $this->IndependentContractor = $IndependentContractor;
     }
 
     /**
@@ -303,15 +303,15 @@ class Staff
      */
     public function isAlwaysAllowDoubleBooking(): bool
     {
-        return $this->alwaysAllowDoubleBooking;
+        return $this->AlwaysAllowDoubleBooking;
     }
 
     /**
-     * @param bool $alwaysAllowDoubleBooking
+     * @param bool $AlwaysAllowDoubleBooking
      */
-    public function setAlwaysAllowDoubleBooking(bool $alwaysAllowDoubleBooking): void
+    public function setAlwaysAllowDoubleBooking(bool $AlwaysAllowDoubleBooking): void
     {
-        $this->alwaysAllowDoubleBooking = $alwaysAllowDoubleBooking;
+        $this->AlwaysAllowDoubleBooking = $AlwaysAllowDoubleBooking;
     }
 
     /**
@@ -335,14 +335,14 @@ class Staff
      */
     public function getAddress()
     {
-        return $this->address;
+        return $this->Address;
     }
 
     /**
-     * @param mixed $address
+     * @param mixed $Address
      */
-    public function setAddress($address): void
+    public function setAddress($Address): void
     {
-        $this->address = $address;
+        $this->Address = $Address;
     }
 }

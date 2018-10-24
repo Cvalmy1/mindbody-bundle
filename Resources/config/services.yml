@@ -10,8 +10,9 @@ services:
         Despark\MindbodyBundle\Service\Soap\Interfaces\CacheResponseInterface:
             tags: [ mindbody.cache.response ]
 
-    Despark\MindbodyBundle\Service\:
-        resource: '../../Service/*'
+    Despark\MindbodyBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Entity,Migrations,Tests,Exceptions,Model,Resources,MindbodyBundle.php}'
 
     # Main soap service
     Despark\MindbodyBundle\Service\SoapService:
@@ -27,4 +28,7 @@ services:
 
     Despark\MindbodyBundle\Service\Soap\Services\StaffService\GetStaff:
         arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\StaffService\GetStaff\GetStaffResponseParser']
+
+    Despark\MindbodyBundle\Service\Soap\Services\StaffService\AddOrUpdateStaff:
+        arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\StaffService\AddOrUpdateStaff\AddOrUpdateStaffResponseParser']
 

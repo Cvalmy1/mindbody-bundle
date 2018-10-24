@@ -37,6 +37,7 @@ trait DefaultServiceMethodTrait
 
     /**
      * @param \Despark\MindbodyBundle\Service\Soap\Interfaces\RequestInterface $request
+     *
      * @return mixed
      * @throws \Psr\Cache\InvalidArgumentException
      */
@@ -55,6 +56,7 @@ trait DefaultServiceMethodTrait
 
     /**
      * @param \Despark\MindbodyBundle\Service\Soap\Interfaces\RequestInterface $request
+     *
      * @return $this
      * @throws \Psr\Cache\InvalidArgumentException
      */
@@ -81,7 +83,9 @@ trait DefaultServiceMethodTrait
 
     /**
      * @param \Despark\MindbodyBundle\Service\Soap\Interfaces\RequestInterface $request
+     *
      * @return mixed
+     * @throws \ReflectionException
      */
     private function callSoapService(RequestInterface $request)
     {
@@ -93,6 +97,7 @@ trait DefaultServiceMethodTrait
 
     /**
      * @return \Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseInterface
+     * @throws \ReflectionException
      */
     public function getResponse(): ?ResponseInterface
     {
@@ -178,10 +183,11 @@ trait DefaultServiceMethodTrait
 
     /**
      * @return string
+     * @throws \ReflectionException
      */
-    private function getClassShortName(): string
+    protected static function getClassShortName(): string
     {
-        $method = (new \ReflectionClass($this))->getShortName();
+        $method = (new \ReflectionClass(self::class))->getShortName();
 
         return $method;
     }
@@ -189,6 +195,7 @@ trait DefaultServiceMethodTrait
 
     /**
      * @param null|\stdClass $sourceObject
+     *
      * @return mixed
      */
     private function castResponse(?\stdClass $sourceObject): ?ResponseInterface
