@@ -27,8 +27,8 @@ services:
         arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\SiteService\GetLocations\GetLocationsResponseParser', '@cache.app']
 
     Despark\MindbodyBundle\Service\Soap\Services\StaffService\GetStaff:
-        arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\StaffService\GetStaff\GetStaffResponseParser']
+        arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\StaffService\Parsers\StaffResponseParser']
 
     Despark\MindbodyBundle\Service\Soap\Services\StaffService\AddOrUpdateStaff:
-        arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\StaffService\AddOrUpdateStaff\AddOrUpdateStaffResponseParser']
+        arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\StaffService\Parsers\StaffResponseParser']
 

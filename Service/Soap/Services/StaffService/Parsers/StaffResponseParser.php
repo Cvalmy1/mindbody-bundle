@@ -1,17 +1,22 @@
 <?php
 
+namespace Despark\MindbodyBundle\Service\Soap\Services\StaffService\Parsers;
 
-namespace Despark\MindbodyBundle\Service\Soap\Services\StaffService\GetStaff;
-
-
-use Despark\MindbodyBundle\Model\Staff;
+use App\Entity\Mindbody\Staff;
 use Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseInterface;
 use Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseParserInterface;
 use Illuminate\Support\Collection;
 
-class GetStaffResponseParser implements ResponseParserInterface
+/**
+ * Class StaffResponseParser
+ */
+class StaffResponseParser implements ResponseParserInterface
 {
-
+    /**
+     * @param \Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseInterface $response
+     *
+     * @return \Illuminate\Support\Collection
+     */
     public function parse(ResponseInterface $response): Collection
     {
 
@@ -35,7 +40,6 @@ class GetStaffResponseParser implements ResponseParserInterface
             $staff->setIndependentContractor($item->IndependentContractor ?? null);
             $staff->setAlwaysAllowDoubleBooking($item->AlwaysAllowDoubleBooking ?? null);
             $staff->setIsMale($item->isMale ?? null);
-
 
             $collection->push($staff);
         }
