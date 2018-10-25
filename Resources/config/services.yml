@@ -19,6 +19,11 @@ services:
         arguments: [ '@Despark\MindbodyBundle\Service\Soap\SoapAuthentication' ]
         shared: false
 
+    Despark\MindbodyBundle\Model\Staff:
+        shared: false
+
+    Despark\MindbodyBundle\Model\StaffInterface: '@Despark\MindbodyBundle\Model\Staff'
+
     # Soap Methods
     Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetEnrollments:
         arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetEnrollments\GetEnrollmentResponseParser']

@@ -2,9 +2,10 @@
 
 namespace Despark\MindbodyBundle\Service\Soap\Services\StaffService\Parsers;
 
-use App\Entity\Mindbody\Staff;
+use Despark\MindbodyBundle\Model\StaffInterface;
 use Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseInterface;
 use Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseParserInterface;
+use Despark\MindbodyBundle\Service\Soap\Response\ResponseHelper;
 use Illuminate\Support\Collection;
 
 /**
@@ -12,10 +13,33 @@ use Illuminate\Support\Collection;
  */
 class StaffResponseParser implements ResponseParserInterface
 {
+
+    /**
+     * @var \Despark\MindbodyBundle\Service\Soap\Response\ResponseHelper
+     */
+    private $helper;
+    /**
+     * @var \Despark\MindbodyBundle\Model\StaffInterface
+     */
+    private $staff;
+
+    /**
+     * StaffResponseParser constructor.
+     *
+     * @param \Despark\MindbodyBundle\Service\Soap\Response\ResponseHelper $helper
+     * @param \Despark\MindbodyBundle\Model\StaffInterface $staff
+     */
+    public function __construct(ResponseHelper $helper, StaffInterface $staff)
+    {
+        $this->helper = $helper;
+        $this->staff = $staff;
+    }
+
     /**
      * @param \Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseInterface $response
      *
      * @return \Illuminate\Support\Collection
+     * @throws \Despark\MindbodyBundle\Exceptions\ResponseException
      */
     public function parse(ResponseInterface $response): Collection
     {
@@ -24,26 +48,12 @@ class StaffResponseParser implements ResponseParserInterface
         $collection = new Collection();
 
         foreach ($items as $item) {
-            $staff = new Staff();
-
-            $staff->setId($item->ID);
-            $staff->setName($item->Name);
-            $staff->setFirstName($item->FirstName);
-            $staff->setLastName($item->LastName);
-            $staff->setMobilePhone($item->MobilePhone ?? null);
-            $staff->setAddress($item->Address ?? null);
-            $staff->setCity($item->City ?? null);
-            $staff->setPostalCode($item->PostalCode ?? null);
-            $staff->setSortOrder($item->SortOrder ?? null);
-            $staff->setAppointmentTrn($item->AppointmentTrn ?? null);
-            $staff->setReservationTrn($item->ReservationTrn ?? null);
-            $staff->setIndependentContractor($item->IndependentContractor ?? null);
-            $staff->setAlwaysAllowDoubleBooking($item->AlwaysAllowDoubleBooking ?? null);
-            $staff->setIsMale($item->isMale ?? null);
-
-            $collection->push($staff);
+            $collection->push(
+                $this->helper->hydrateObject($item, $this->staff)
+            );
         }
 
         return $collection;
     }
+
 }

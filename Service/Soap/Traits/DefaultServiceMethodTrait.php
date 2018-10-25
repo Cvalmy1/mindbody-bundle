@@ -50,6 +50,7 @@ trait DefaultServiceMethodTrait
         }
 
         $this->rawResponse = $this->callSoapService($request);
+        $this->response = null;
 
         return $this;
     }

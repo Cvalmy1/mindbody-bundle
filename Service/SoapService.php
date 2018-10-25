@@ -77,19 +77,17 @@ class SoapService implements SoapServiceInterface
      */
     private function initClient(bool $force = false)
     {
-        if ($force || !isset($this->client)) {
-            $this->client = new MindBodySoapClient($this->getWsdl(), [
-                'location' => $this->getLocation(),
-                'exceptions' => 0,
-                'trace' => 1,
-                'stream_context' => stream_context_create([
-                    'http' => [
-                        'header' => $this->auth->getHeaders(),
-                    ],
-                ]),
+        $this->client = new MindBodySoapClient($this->getWsdl(), [
+            'location' => $this->getLocation(),
+            'exceptions' => 0,
+            'trace' => 1,
+            'stream_context' => stream_context_create([
+                'http' => [
+                    'header' => $this->auth->getHeaders(),
+                ],
+            ]),
 
-            ]);
-        }
+        ]);
     }
 
 
@@ -182,7 +180,7 @@ class SoapService implements SoapServiceInterface
             // We need to force the same namespace so we hardcoded it
             $request->Request = $argument;
 
-            if($this->testMode){
+            if ($this->testMode) {
                 $request->Request->Test = true;
             }
 
