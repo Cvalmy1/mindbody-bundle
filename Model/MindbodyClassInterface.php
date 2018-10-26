@@ -197,8 +197,9 @@ interface MindbodyClassInterface
 
     /**
      * @param \DateTimeInterface $StartDateTime
+     * @param string $format
      */
-    public function setStartDateTime(\DateTimeInterface $StartDateTime): void;
+    public function setStartDateTime(\DateTimeInterface $StartDateTime, string $format = 'Y-m-d\TH:i:s'): void;
 
     /**
      * @return null|string
@@ -207,16 +208,21 @@ interface MindbodyClassInterface
 
     /**
      * @param \DateTimeInterface $EndDateTime
+     * @param string $format
      */
-    public function setEndDateTime(\DateTimeInterface $EndDateTime): void;
+    public function setEndDateTime(\DateTimeInterface $EndDateTime, string $format = 'Y-m-d\TH:i:s'): void;
 
     /**
      * @return null|string
      */
-    public function getLastModifiedDate(): ?string;
+    public function getLastModifiedDateTime(): ?string;
 
     /**
      * @param \DateTimeInterface|null $LastModifiedDateTime
+     * @param string $format
      */
-    public function setLastModifiedDate(?\DateTimeInterface $LastModifiedDateTime): void;
+    public function setLastModifiedDateTime(
+        ?\DateTimeInterface $LastModifiedDateTime,
+        string $format = 'Y-m-d\TH:i:s'
+    ): void;
 }

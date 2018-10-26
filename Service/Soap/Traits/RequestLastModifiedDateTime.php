@@ -8,8 +8,6 @@ namespace Despark\MindbodyBundle\Service\Soap\Traits;
  */
 trait RequestLastModifiedDateTime
 {
-    private $lastModifiedDateTimeFormat = 'Y-m-d\TH:i:s';
-
     /**
      * @var string|null
      */
@@ -18,16 +16,22 @@ trait RequestLastModifiedDateTime
     /**
      * @return null|string
      */
-    public function getLastModifiedDate(): ?string
+    public function getLastModifiedDateTime(): ?string
     {
         return $this->LastModifiedDateTime;
     }
 
     /**
      * @param \DateTimeInterface|null $LastModifiedDateTime
+     * @param string $format
+     * TODO Fix format
      */
-    public function setLastModifiedDate(?\DateTimeInterface $LastModifiedDateTime): void
-    {
-        $this->LastModifiedDateTime = $LastModifiedDateTime->format($this->lastModifiedDateTimeFormat);
+    public function setLastModifiedDateTime(
+        ?\DateTimeInterface $LastModifiedDateTime,
+        string $format = 'Y-m-d\TH:i:s'
+    ): void {
+        if (!is_null($LastModifiedDateTime)) {
+            $this->LastModifiedDateTime = $LastModifiedDateTime->format($format);
+        }
     }
 }

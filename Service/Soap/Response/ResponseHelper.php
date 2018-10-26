@@ -4,6 +4,8 @@ namespace Despark\MindbodyBundle\Service\Soap\Response;
 
 use Despark\MindbodyBundle\Exceptions\ResponseException;
 use Despark\MindbodyBundle\Model\StaffInterface;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 
 /**
  * Class ResponseHelper
@@ -16,12 +18,19 @@ class ResponseHelper
     private $staff;
 
     /**
+     * @var \Psr\Log\LoggerInterface
+     */
+    private $logger;
+
+    /**
      * ResponseHelper constructor.
      * @param \Despark\MindbodyBundle\Model\StaffInterface $staff
+     * @param \Psr\Log\LoggerInterface $logger
      */
-    public function __construct(StaffInterface $staff)
+    public function __construct(StaffInterface $staff, LoggerInterface $logger)
     {
         $this->staff = $staff;
+        $this->logger = $logger;
     }
 
     /**
@@ -36,14 +45,11 @@ class ResponseHelper
             throw new ResponseException('Bad type');
         }
 
-        $targetClone = clone $target;
-
         $sourceReflection = new \ReflectionObject($source);
-
         $sourceProperties = $sourceReflection->getProperties();
 
+        $targetClone = clone $target;
         $targetReflection = new \ReflectionObject($targetClone);
-
         $targetMethods = $targetReflection->getMethods(\ReflectionMethod::IS_PUBLIC);
 
         /** @var \ReflectionMethod[] $targetSetters */
@@ -70,7 +76,12 @@ class ResponseHelper
                     $className = $parameterType->getName();
 
                     if (is_a($className, \DateTimeInterface::class, true)) {
-                        $value = \DateTime::createFromFormat('Y-m-d\TH:i:s', $property->getValue($source));
+                        try {
+                            $value = $this->getDateTimeValue($source, $setter, $property);
+                        } catch (ParameterNotFoundException $exception) {
+                            $this->logger->error($exception);
+                            $value = null;
+                        }
                     } elseif (is_a($className, StaffInterface::class, true)) {
                         $newTarget = clone $this->staff;
                         $value = $this->hydrateObject($newSource, $newTarget);
@@ -87,5 +98,32 @@ class ResponseHelper
         }
 
         return $targetClone;
+    }
+
+    /**
+     * @param $source
+     * @param \ReflectionMethod $setter
+     * @param \ReflectionProperty $property
+     * @return \DateTimeInterface|null
+     */
+    private function getDateTimeValue(
+        $source,
+        \ReflectionMethod $setter,
+        \ReflectionProperty $property
+    ): ?\DateTimeInterface {
+        $parameters = $setter->getParameters();
+
+        if (!isset($parameters[1])) {
+            throw new ParameterNotFoundException('format');
+        }
+
+        $format = $parameters[1]->getDefaultValue();
+        $date = \DateTime::createFromFormat($format, $property->getValue($source));
+
+        if (!$date) {
+            return null;
+        }
+
+        return $date;
     }
 }

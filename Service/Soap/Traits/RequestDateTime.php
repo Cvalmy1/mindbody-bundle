@@ -28,10 +28,13 @@ trait RequestDateTime
 
     /**
      * @param \DateTimeInterface $StartDateTime
+     * @param string $format
      */
-    public function setStartDateTime(\DateTimeInterface $StartDateTime): void
+    public function setStartDateTime(\DateTimeInterface $StartDateTime, string $format = 'Y-m-d\TH:i:s'): void
     {
-        $this->StartDateTime = $StartDateTime->format(DATE_ATOM);
+        if (!is_null($StartDateTime)) {
+            $this->StartDateTime = $StartDateTime->format($format);
+        }
     }
 
     /**
@@ -44,9 +47,12 @@ trait RequestDateTime
 
     /**
      * @param \DateTimeInterface $EndDateTime
+     * @param string $format
      */
-    public function setEndDateTime(\DateTimeInterface $EndDateTime): void
+    public function setEndDateTime(\DateTimeInterface $EndDateTime, string $format = 'Y-m-d\TH:i:s'): void
     {
-        $this->EndDateTime = $EndDateTime->format(DATE_ATOM);
+        if (!is_null($EndDateTime)) {
+            $this->EndDateTime = $EndDateTime->format($format);
+        }
     }
 }
