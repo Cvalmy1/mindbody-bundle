@@ -1,8 +1,8 @@
 <?php
 
-
 namespace Despark\MindbodyBundle\Model\Traits;
 
+use Symfony\Component\Validator\Constraints as Assert;
 
 trait StaffTrait
 {
@@ -67,27 +67,27 @@ trait StaffTrait
     protected $SortOrder;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $AppointmentTrn;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $ReservationTrn;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $IndependentContractor;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $AlwaysAllowDoubleBooking;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $isMale;
 
@@ -253,81 +253,81 @@ trait StaffTrait
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isAppointmentTrn(): bool
+    public function isAppointmentTrn(): ?bool
     {
         return $this->AppointmentTrn;
     }
 
     /**
-     * @param bool $AppointmentTrn
+     * @param bool|null $AppointmentTrn
      */
-    public function setAppointmentTrn(bool $AppointmentTrn): void
+    public function setAppointmentTrn(?bool $AppointmentTrn): void
     {
         $this->AppointmentTrn = $AppointmentTrn;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isReservationTrn(): bool
+    public function isReservationTrn(): ?bool
     {
         return $this->ReservationTrn;
     }
 
     /**
-     * @param bool $ReservationTrn
+     * @param bool|null $ReservationTrn
      */
-    public function setReservationTrn(bool $ReservationTrn): void
+    public function setReservationTrn(?bool $ReservationTrn): void
     {
         $this->ReservationTrn = $ReservationTrn;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isIndependentContractor(): bool
+    public function isIndependentContractor(): ?bool
     {
         return $this->IndependentContractor;
     }
 
     /**
-     * @param bool $IndependentContractor
+     * @param bool|null $IndependentContractor
      */
-    public function setIndependentContractor(bool $IndependentContractor): void
+    public function setIndependentContractor(?bool $IndependentContractor): void
     {
         $this->IndependentContractor = $IndependentContractor;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isAlwaysAllowDoubleBooking(): bool
+    public function isAlwaysAllowDoubleBooking(): ?bool
     {
         return $this->AlwaysAllowDoubleBooking;
     }
 
     /**
-     * @param bool $AlwaysAllowDoubleBooking
+     * @param bool|null $AlwaysAllowDoubleBooking
      */
-    public function setAlwaysAllowDoubleBooking(bool $AlwaysAllowDoubleBooking): void
+    public function setAlwaysAllowDoubleBooking(?bool $AlwaysAllowDoubleBooking): void
     {
         $this->AlwaysAllowDoubleBooking = $AlwaysAllowDoubleBooking;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isMale(): bool
+    public function isMale(): ?bool
     {
         return $this->isMale;
     }
 
     /**
-     * @param bool $isMale
+     * @param bool|null $isMale
      */
-    public function setIsMale(bool $isMale): void
+    public function setIsMale(?bool $isMale): void
     {
         $this->isMale = $isMale;
     }
@@ -363,5 +363,4 @@ trait StaffTrait
     {
         $this->Email = $Email;
     }
-
 }

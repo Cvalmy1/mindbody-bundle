@@ -105,54 +105,54 @@ interface StaffInterface
     public function setSortOrder(?int $SortOrder): void;
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isAppointmentTrn(): bool;
+    public function isAppointmentTrn(): ?bool;
 
     /**
-     * @param bool $AppointmentTrn
+     * @param bool|null $AppointmentTrn
      */
-    public function setAppointmentTrn(bool $AppointmentTrn): void;
+    public function setAppointmentTrn(?bool $AppointmentTrn): void;
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isReservationTrn(): bool;
+    public function isReservationTrn(): ?bool;
 
     /**
-     * @param bool $ReservationTrn
+     * @param bool|null $ReservationTrn
      */
-    public function setReservationTrn(bool $ReservationTrn): void;
+    public function setReservationTrn(?bool $ReservationTrn): void;
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isIndependentContractor(): bool;
+    public function isIndependentContractor(): ?bool;
 
     /**
-     * @param bool $IndependentContractor
+     * @param bool|null $IndependentContractor
      */
-    public function setIndependentContractor(bool $IndependentContractor): void;
+    public function setIndependentContractor(?bool $IndependentContractor): void;
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isAlwaysAllowDoubleBooking(): bool;
+    public function isAlwaysAllowDoubleBooking(): ?bool;
 
     /**
-     * @param bool $AlwaysAllowDoubleBooking
+     * @param bool|null $AlwaysAllowDoubleBooking
      */
-    public function setAlwaysAllowDoubleBooking(bool $AlwaysAllowDoubleBooking): void;
+    public function setAlwaysAllowDoubleBooking(?bool $AlwaysAllowDoubleBooking): void;
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isMale(): bool;
+    public function isMale(): ?bool;
 
     /**
-     * @param bool $isMale
+     * @param bool|null $isMale
      */
-    public function setIsMale(bool $isMale): void;
+    public function setIsMale(?bool $isMale): void;
 
     /**
      * @return mixed
