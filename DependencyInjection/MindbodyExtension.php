@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Despark\MindbodyBundle\DependencyInjection;
-
 
 use Despark\MindbodyBundle\Service\Soap\SoapAuthentication;
 use Despark\MindbodyBundle\Service\SoapService;
@@ -18,9 +16,8 @@ class MindbodyExtension extends Extension
 {
 
     /**
-     * Loads a specific configuration.
-     *
-     * @throws \InvalidArgumentException When provided tag is not defined in this extension
+     * @param array $configs
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      * @throws \Exception
      */
     public function load(array $configs, ContainerBuilder $container)

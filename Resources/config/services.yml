@@ -22,7 +22,12 @@ services:
     Despark\MindbodyBundle\Model\Staff:
         shared: false
 
+    Despark\MindbodyBundle\Model\MindbodyClass:
+        shared: false
+
     Despark\MindbodyBundle\Model\StaffInterface: '@Despark\MindbodyBundle\Model\Staff'
+
+    Despark\MindbodyBundle\Model\MindbodyClassInterface: '@Despark\MindbodyBundle\Model\MindbodyClass'
 
     # Soap Methods
     Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetEnrollments:
@@ -36,4 +41,7 @@ services:
 
     Despark\MindbodyBundle\Service\Soap\Services\StaffService\AddOrUpdateStaff:
         arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\StaffService\Parsers\StaffResponseParser']
+
+    Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetClasses:
+        arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\ClassService\Parsers\GetClassesResponseParser']
 

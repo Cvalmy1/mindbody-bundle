@@ -73,9 +73,9 @@ class SoapService implements SoapServiceInterface
     }
 
     /**
-     * @param bool $force
+     *
      */
-    private function initClient(bool $force = false)
+    private function initClient(): void
     {
         $this->client = new MindBodySoapClient($this->getWsdl(), [
             'location' => $this->getLocation(),
@@ -92,9 +92,9 @@ class SoapService implements SoapServiceInterface
 
 
     /**
-     * @return mixed|string
+     * @return string
      */
-    public function getUri()
+    public function getUri(): string
     {
         return rtrim($this->url, '/').'/'.$this->getVersion();
     }
@@ -108,9 +108,9 @@ class SoapService implements SoapServiceInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return $this->version;
     }
@@ -118,7 +118,7 @@ class SoapService implements SoapServiceInterface
     /**
      * @param mixed $version
      */
-    public function setVersion($version): void
+    public function setVersion(string $version): void
     {
         $this->version = $version;
     }

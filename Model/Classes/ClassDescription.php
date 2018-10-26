@@ -2,6 +2,9 @@
 
 namespace Despark\MindbodyBundle\Model\Classes;
 
+use Despark\MindbodyBundle\Model\Classes\ClassDescription\Program;
+use Despark\MindbodyBundle\Model\Classes\ClassDescription\SessionType;
+
 /**
  * Class ClassDescription
  * @package Despark\MindbodyBundle\Model
@@ -12,32 +15,42 @@ class ClassDescription
     /**
      * @var int
      */
-    protected $id;
+    protected $ID;
 
     /**
      * @var string
      */
-    protected $name;
+    protected $Name;
 
     /**
      * @var string
      */
-    protected $description;
+    protected $Description;
+
+    /**
+     * @var \Despark\MindbodyBundle\Model\Classes\ClassDescription\Program
+     */
+    protected $Program;
+
+    /**
+     * @var \Despark\MindbodyBundle\Model\Classes\ClassDescription\SessionType
+     */
+    protected $SessionType;
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getID(): int
     {
-        return $this->id;
+        return $this->ID;
     }
 
     /**
-     * @param int $id
+     * @param int $ID
      */
-    public function setId(int $id): void
+    public function setID(int $ID): void
     {
-        $this->id = $id;
+        $this->ID = $ID;
     }
 
     /**
@@ -45,15 +58,15 @@ class ClassDescription
      */
     public function getName(): string
     {
-        return $this->name;
+        return $this->Name;
     }
 
     /**
-     * @param string $name
+     * @param string $Name
      */
-    public function setName(string $name): void
+    public function setName(string $Name): void
     {
-        $this->name = $name;
+        $this->Name = $Name;
     }
 
     /**
@@ -61,16 +74,46 @@ class ClassDescription
      */
     public function getDescription(): string
     {
-        return $this->description;
+        return $this->Description;
     }
 
     /**
-     * @param string $description
+     * @param string $Description
      */
-    public function setDescription(string $description): void
+    public function setDescription(string $Description): void
     {
-        $this->description = $description;
+        $this->Description = $Description;
     }
 
+    /**
+     * @return \Despark\MindbodyBundle\Model\Classes\ClassDescription\Program
+     */
+    public function getProgram(): Program
+    {
+        return $this->Program;
+    }
 
+    /**
+     * @param \Despark\MindbodyBundle\Model\Classes\ClassDescription\Program $Program
+     */
+    public function setProgram(Program $Program): void
+    {
+        $this->Program = $Program;
+    }
+
+    /**
+     * @return \Despark\MindbodyBundle\Model\Classes\ClassDescription\SessionType
+     */
+    public function getSessionType(): SessionType
+    {
+        return $this->SessionType;
+    }
+
+    /**
+     * @param \Despark\MindbodyBundle\Model\Classes\ClassDescription\SessionType $SessionType
+     */
+    public function setSessionType(SessionType $SessionType): void
+    {
+        $this->SessionType = $SessionType;
+    }
 }

@@ -16,14 +16,13 @@ class StaffService implements MindbodyServiceInterface
 {
     use DefaultSoapServiceTrait;
 
-    /**
-     * Sericename
-     */
     const SERVICE_NAME = 'StaffService';
+
     /**
      * @var \Despark\MindbodyBundle\Service\Soap\Services\StaffService\GetStaff
      */
     private $getStaffMethod;
+
     /**
      * @var \Despark\MindbodyBundle\Service\Soap\Services\StaffService\AddOrUpdateStaff
      */

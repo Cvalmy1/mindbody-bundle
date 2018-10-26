@@ -18,7 +18,6 @@ use Illuminate\Support\Collection;
  */
 class GetEnrollmentResponseParser implements ResponseParserInterface
 {
-
     /**
      * @param \Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseInterface $response
      * @return \Illuminate\Support\Collection
@@ -69,7 +68,7 @@ class GetEnrollmentResponseParser implements ResponseParserInterface
     private function parseClassDescription($classDescription): ClassDescription
     {
         $classDescriptionClass = new ClassDescription();
-        $classDescriptionClass->setId($classDescription->ID);
+        $classDescriptionClass->setID($classDescription->ID);
         $classDescriptionClass->setName($classDescription->Name);
         $classDescriptionClass->setDescription($classDescription->Description);
 
@@ -84,8 +83,8 @@ class GetEnrollmentResponseParser implements ResponseParserInterface
     {
         $locationClass = new Location();
 
-        $locationClass->setId($location->ID);
-        $locationClass->setSiteId($location->SiteID);
+        $locationClass->setID($location->ID);
+        $locationClass->setSiteID($location->SiteID);
         $locationClass->setName($location->Name);
 
         return $locationClass;

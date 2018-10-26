@@ -10,9 +10,9 @@ namespace Despark\MindbodyBundle\Service;
 interface SoapServiceInterface
 {
     /**
-     * @return mixed
+     * @return string
      */
-    public function getUri();
+    public function getUri(): string;
 
     /**
      * @return \SoapClient
@@ -20,14 +20,14 @@ interface SoapServiceInterface
     public function getClient(): \SoapClient;
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getVersion();
+    public function getVersion(): string;
 
     /**
-     * @param mixed $version
+     * @param string $version
      */
-    public function setVersion($version): void;
+    public function setVersion(string $version): void;
 
     /**
      * @param string $service

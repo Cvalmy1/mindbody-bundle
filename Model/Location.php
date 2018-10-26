@@ -12,48 +12,48 @@ class Location
     /**
      * @var int
      */
-    protected $id;
+    protected $ID;
 
     /**
      * @var int
      */
-    protected $siteId;
+    protected $SiteID;
 
     /**
      * @var string
      */
-    protected $name;
+    protected $Name;
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getID(): int
     {
-        return $this->id;
+        return $this->ID;
     }
 
     /**
-     * @param int $id
+     * @param int $ID
      */
-    public function setId(int $id): void
+    public function setID(int $ID): void
     {
-        $this->id = $id;
+        $this->ID = $ID;
     }
 
     /**
      * @return int
      */
-    public function getSiteId(): int
+    public function getSiteID(): int
     {
-        return $this->siteId;
+        return $this->SiteID;
     }
 
     /**
-     * @param int $siteId
+     * @param int $SiteID
      */
-    public function setSiteId(int $siteId): void
+    public function setSiteID(int $SiteID): void
     {
-        $this->siteId = $siteId;
+        $this->SiteID = $SiteID;
     }
 
     /**
@@ -61,14 +61,14 @@ class Location
      */
     public function getName(): string
     {
-        return $this->name;
+        return $this->Name;
     }
 
     /**
-     * @param string $name
+     * @param string $Name
      */
-    public function setName(string $name): void
+    public function setName(string $Name): void
     {
-        $this->name = $name;
+        $this->Name = $Name;
     }
 }

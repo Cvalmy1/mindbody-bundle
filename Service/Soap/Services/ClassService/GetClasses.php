@@ -1,23 +1,20 @@
 <?php
 
-namespace Despark\MindbodyBundle\Service\Soap\Services\StaffService;
+namespace Despark\MindbodyBundle\Service\Soap\Services\ClassService;
 
 use Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseParserInterface;
+use Despark\MindbodyBundle\Service\Soap\Services\ClassService;
+use Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetClasses\GetClassesResponse;
 use Despark\MindbodyBundle\Service\Soap\Services\ServiceMethodInterface;
-use Despark\MindbodyBundle\Service\Soap\Services\StaffService;
-use Despark\MindbodyBundle\Service\Soap\Services\StaffService\GetStaff\GetStaffResponse;
 use Despark\MindbodyBundle\Service\Soap\Traits\DefaultServiceMethodTrait;
 use Despark\MindbodyBundle\Service\SoapServiceInterface;
 
-/**
- * Class GetStaffMethod.
- */
-class GetStaff implements ServiceMethodInterface
+class GetClasses implements ServiceMethodInterface
 {
     use DefaultServiceMethodTrait;
 
     /**
-     * GetStaff constructor.
+     * GetClasses constructor.
      * @param \Despark\MindbodyBundle\Service\SoapServiceInterface $soapService
      * @param \Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseParserInterface $responseParser
      */
@@ -25,7 +22,7 @@ class GetStaff implements ServiceMethodInterface
     {
         $this->setResponseParser($responseParser);
         $this->setSoapService($soapService);
-        $this->setResponseClass(GetStaffResponse::class);
+        $this->setResponseClass(GetClassesResponse::class);
     }
 
     /**
@@ -33,6 +30,6 @@ class GetStaff implements ServiceMethodInterface
      */
     public static function getServiceName(): string
     {
-        return StaffService::SERVICE_NAME;
+        return ClassService::SERVICE_NAME;
     }
 }

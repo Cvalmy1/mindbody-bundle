@@ -40,6 +40,7 @@ trait DefaultServiceMethodTrait
      *
      * @return mixed
      * @throws \Psr\Cache\InvalidArgumentException
+     * @throws \ReflectionException
      */
     public function execute(RequestInterface $request): ServiceMethodInterface
     {
@@ -60,6 +61,7 @@ trait DefaultServiceMethodTrait
      *
      * @return $this
      * @throws \Psr\Cache\InvalidArgumentException
+     * @throws \ReflectionException
      */
     private function handleCachedRequest(RequestInterface $request)
     {
@@ -115,6 +117,7 @@ trait DefaultServiceMethodTrait
 
     /**
      * @return mixed
+     * @throws \ReflectionException
      */
     public function getResult(): Collection
     {

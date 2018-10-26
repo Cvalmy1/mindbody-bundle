@@ -1,67 +1,68 @@
 <?php
 
-namespace Despark\MindbodyBundle\Service\Soap\Services\ClassService;
+namespace Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetClasses;
 
+use Despark\MindbodyBundle\Service\Soap\Interfaces\RequestInterface;
 use Despark\MindbodyBundle\Service\Soap\Traits\DefaultRequestTrait;
 use Despark\MindbodyBundle\Service\Soap\Traits\RequestDateTime;
+use Despark\MindbodyBundle\Service\Soap\Traits\RequestLastModifiedDate;
 
 /**
  * Class GetClassesRequest
- * @package Despark\MindbodyBundle\Service\Soap\Request
  */
-class GetClassesRequest
+class GetClassesRequest implements RequestInterface
 {
-    use DefaultRequestTrait, RequestDateTime;
+    use DefaultRequestTrait, RequestDateTime, RequestLastModifiedDate;
 
     /**
      * @var int[]|null
      */
-    protected $ClassDescriptionIDs;
+    private $ClassDescriptionIDs;
 
     /**
      * @var int[]|null
      */
-    protected $ClassIDs;
+    private $ClassIDs;
 
     /**
      * @var int[]|null
      */
-    protected $StaffIDs;
+    private $StaffIDs;
 
     /**
-     * @var int
+     * @var int|null
      */
-    protected $ClientID;
-
-    /**
-     * @var int[]|null
-     */
-    protected $ProgramIDs;
+    private $ClientID;
 
     /**
      * @var int[]|null
      */
-    protected $SessionTypeIDs;
+    private $ProgramIDs;
 
     /**
      * @var int[]|null
      */
-    protected $LocationIDs;
+    private $SessionTypeIDs;
 
     /**
-     * @var bool
+     * @var int[]|null
      */
-    protected $HideCanceledClasses;
+    private $LocationIDs;
 
     /**
-     * @var bool
+     * @var int[]|null
      */
-    protected $SchedulingWindow;
+    private $SemesterIDs;
 
     /**
-     * @var \DateTimeInterface|null
+     * @var bool|null
      */
-    protected $LastModifiedDate;
+    private $HideCanceledClasses;
+
+    /**
+     * @var bool|null
+     */
+    private $SchedulingWindow;
 
     /**
      * @return int[]|null
@@ -112,17 +113,17 @@ class GetClassesRequest
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getClientID(): int
+    public function getClientID(): ?int
     {
         return $this->ClientID;
     }
 
     /**
-     * @param int $ClientID
+     * @param int|null $ClientID
      */
-    public function setClientID(int $ClientID): void
+    public function setClientID(?int $ClientID): void
     {
         $this->ClientID = $ClientID;
     }
@@ -176,50 +177,50 @@ class GetClassesRequest
     }
 
     /**
-     * @return bool
+     * @return int[]|null
      */
-    public function isHideCanceledClasses(): bool
+    public function getSemesterIDs(): ?array
+    {
+        return $this->SemesterIDs;
+    }
+
+    /**
+     * @param int[]|null $SemesterIDs
+     */
+    public function setSemesterIDs(?array $SemesterIDs): void
+    {
+        $this->SemesterIDs = $SemesterIDs;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getHideCanceledClasses(): ?bool
     {
         return $this->HideCanceledClasses;
     }
 
     /**
-     * @param bool $HideCanceledClasses
+     * @param bool|null $HideCanceledClasses
      */
-    public function setHideCanceledClasses(bool $HideCanceledClasses): void
+    public function setHideCanceledClasses(?bool $HideCanceledClasses): void
     {
         $this->HideCanceledClasses = $HideCanceledClasses;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isSchedulingWindow(): bool
+    public function getSchedulingWindow(): ?bool
     {
         return $this->SchedulingWindow;
     }
 
     /**
-     * @param bool $SchedulingWindow
+     * @param bool|null $SchedulingWindow
      */
-    public function setSchedulingWindow(bool $SchedulingWindow): void
+    public function setSchedulingWindow(?bool $SchedulingWindow): void
     {
         $this->SchedulingWindow = $SchedulingWindow;
-    }
-
-    /**
-     * @return \DateTimeInterface|null
-     */
-    public function getLastModifiedDate(): ?\DateTimeInterface
-    {
-        return $this->LastModifiedDate;
-    }
-
-    /**
-     * @param \DateTimeInterface|null $LastModifiedDate
-     */
-    public function setLastModifiedDate(?\DateTimeInterface $LastModifiedDate): void
-    {
-        $this->LastModifiedDate = $LastModifiedDate;
     }
 }
