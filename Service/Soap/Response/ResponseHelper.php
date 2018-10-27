@@ -4,7 +4,6 @@ namespace Despark\MindbodyBundle\Service\Soap\Response;
 
 use Despark\MindbodyBundle\Exceptions\ResponseException;
 use Despark\MindbodyBundle\Model\StaffInterface;
-use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 
 /**
@@ -18,19 +17,12 @@ class ResponseHelper
     private $staff;
 
     /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    private $logger;
-
-    /**
      * ResponseHelper constructor.
      * @param \Despark\MindbodyBundle\Model\StaffInterface $staff
-     * @param \Psr\Log\LoggerInterface $logger
      */
-    public function __construct(StaffInterface $staff, LoggerInterface $logger)
+    public function __construct(StaffInterface $staff)
     {
         $this->staff = $staff;
-        $this->logger = $logger;
     }
 
     /**
@@ -76,12 +68,7 @@ class ResponseHelper
                     $className = $parameterType->getName();
 
                     if (is_a($className, \DateTimeInterface::class, true)) {
-                        try {
-                            $value = $this->getDateTimeValue($source, $setter, $property);
-                        } catch (ParameterNotFoundException $exception) {
-                            $this->logger->error($exception);
-                            $value = null;
-                        }
+                        $value = $this->getDateTimeValue($source, $setter, $property);
                     } elseif (is_a($className, StaffInterface::class, true)) {
                         $newTarget = clone $this->staff;
                         $value = $this->hydrateObject($newSource, $newTarget);
