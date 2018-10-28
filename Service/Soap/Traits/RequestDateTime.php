@@ -9,19 +9,19 @@ namespace Despark\MindbodyBundle\Service\Soap\Traits;
 trait RequestDateTime
 {
     /**
-     * @var string|null
+     * @var string
      */
     protected $StartDateTime;
 
     /**
-     * @var string|null
+     * @var string
      */
     protected $EndDateTime;
 
     /**
-     * @return null|string
+     * @return string
      */
-    public function getStartDateTime(): ?string
+    public function getStartDateTime(): string
     {
         return $this->StartDateTime;
     }
@@ -32,13 +32,11 @@ trait RequestDateTime
      */
     public function setStartDateTime(\DateTimeInterface $StartDateTime, string $format = 'Y-m-d\TH:i:s'): void
     {
-        if (!is_null($StartDateTime)) {
-            $this->StartDateTime = $StartDateTime->format($format);
-        }
+        $this->StartDateTime = $StartDateTime->format($format);
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getEndDateTime(): ?string
     {
@@ -51,8 +49,6 @@ trait RequestDateTime
      */
     public function setEndDateTime(\DateTimeInterface $EndDateTime, string $format = 'Y-m-d\TH:i:s'): void
     {
-        if (!is_null($EndDateTime)) {
-            $this->EndDateTime = $EndDateTime->format($format);
-        }
+        $this->EndDateTime = $EndDateTime->format($format);
     }
 }

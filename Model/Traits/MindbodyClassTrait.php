@@ -104,12 +104,12 @@ trait MindbodyClassTrait
     private $Staff;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $StartDateTime;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $EndDateTime;
 
@@ -407,9 +407,9 @@ trait MindbodyClassTrait
     }
 
     /**
-     * @return null|string
+     * @return string
      */
-    public function getStartDateTime(): ?string
+    public function getStartDateTime(): string
     {
         return $this->StartDateTime;
     }
@@ -420,15 +420,13 @@ trait MindbodyClassTrait
      */
     public function setStartDateTime(\DateTimeInterface $StartDateTime, string $format = 'Y-m-d\TH:i:s'): void
     {
-        if (!is_null($StartDateTime)) {
-            $this->StartDateTime = $StartDateTime->format($format);
-        }
+        $this->StartDateTime = $StartDateTime->format($format);
     }
 
     /**
-     * @return null|string
+     * @return string
      */
-    public function getEndDateTime(): ?string
+    public function getEndDateTime(): string
     {
         return $this->EndDateTime;
     }
@@ -439,9 +437,7 @@ trait MindbodyClassTrait
      */
     public function setEndDateTime(\DateTimeInterface $EndDateTime, string $format = 'Y-m-d\TH:i:s'): void
     {
-        if (!is_null($EndDateTime)) {
-            $this->EndDateTime = $EndDateTime->format($format);
-        }
+        $this->EndDateTime = $EndDateTime->format($format);
     }
 
     /**

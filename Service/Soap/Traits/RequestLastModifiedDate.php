@@ -14,22 +14,22 @@ trait RequestLastModifiedDate
     private $lastModifiedDateFormat = 'd-m-Y';
 
     /**
-     * @var string|null
+     * @var string
      */
     private $LastModifiedDate;
 
     /**
-     * @return null|string
+     * @return string
      */
-    public function getLastModifiedDate(): ?string
+    public function getLastModifiedDate(): string
     {
         return $this->LastModifiedDate;
     }
 
     /**
-     * @param \DateTimeInterface|null $LastModifiedDate
+     * @param \DateTimeInterface $LastModifiedDate
      */
-    public function setLastModifiedDate(?\DateTimeInterface $LastModifiedDate): void
+    public function setLastModifiedDate(\DateTimeInterface $LastModifiedDate): void
     {
         $this->LastModifiedDate = $LastModifiedDate->format($this->lastModifiedDateFormat);
     }

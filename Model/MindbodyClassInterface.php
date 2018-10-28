@@ -191,26 +191,26 @@ interface MindbodyClassInterface
     public function setStaff(StaffInterface $Staff): void;
 
     /**
-     * @return null|string
+     * @return string
      */
-    public function getStartDateTime(): ?string;
+    public function getStartDateTime(): string;
 
     /**
      * @param \DateTimeInterface $StartDateTime
      * @param string $format
      */
-    public function setStartDateTime(\DateTimeInterface $StartDateTime, string $format = 'Y-m-d\TH:i:s'): void;
+    public function setStartDateTime(\DateTimeInterface $StartDateTime, string $format): void;
 
     /**
-     * @return null|string
+     * @return string
      */
-    public function getEndDateTime(): ?string;
+    public function getEndDateTime(): string;
 
     /**
      * @param \DateTimeInterface $EndDateTime
      * @param string $format
      */
-    public function setEndDateTime(\DateTimeInterface $EndDateTime, string $format = 'Y-m-d\TH:i:s'): void;
+    public function setEndDateTime(\DateTimeInterface $EndDateTime, string $format): void;
 
     /**
      * @return null|string
@@ -221,8 +221,5 @@ interface MindbodyClassInterface
      * @param \DateTimeInterface|null $LastModifiedDateTime
      * @param string $format
      */
-    public function setLastModifiedDateTime(
-        ?\DateTimeInterface $LastModifiedDateTime,
-        string $format = 'Y-m-d\TH:i:s'
-    ): void;
+    public function setLastModifiedDateTime(?\DateTimeInterface $LastModifiedDateTime, string $format): void;
 }
