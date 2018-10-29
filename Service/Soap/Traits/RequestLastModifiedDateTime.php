@@ -24,11 +24,10 @@ trait RequestLastModifiedDateTime
     /**
      * @param \DateTimeInterface $LastModifiedDateTime
      * @param string $format
-     * TODO Fix format
      */
     public function setLastModifiedDateTime(
         \DateTimeInterface $LastModifiedDateTime,
-        string $format = 'Y-m-d\TH:i:s'
+        string $format = 'Y-m-d\TH:i:s.u\Z'
     ): void {
         $this->LastModifiedDateTime = $LastModifiedDateTime->format($format);
     }

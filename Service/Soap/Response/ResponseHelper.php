@@ -4,13 +4,22 @@ namespace Despark\MindbodyBundle\Service\Soap\Response;
 
 use Despark\MindbodyBundle\Exceptions\ResponseException;
 use Despark\MindbodyBundle\Model\StaffInterface;
-use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 
 /**
  * Class ResponseHelper
  */
 class ResponseHelper
 {
+    /**
+     * @var array
+     */
+    protected $availableDateTimeFormats = [
+        'Y-m-d\TH:i:s.u\Z',
+        'Y-m-d\TH:i:s.u',
+        'Y-m-d\TH:i:s',
+        'Y-m-d',
+    ];
+
     /**
      * @var \Despark\MindbodyBundle\Model\StaffInterface
      */
@@ -68,7 +77,7 @@ class ResponseHelper
                     $className = $parameterType->getName();
 
                     if (is_a($className, \DateTimeInterface::class, true)) {
-                        $value = $this->getDateTimeValue($source, $setter, $property);
+                        $value = $this->getDateTimeValue($source, $property);
                     } elseif (is_a($className, StaffInterface::class, true)) {
                         $newTarget = clone $this->staff;
                         $value = $this->hydrateObject($newSource, $newTarget);
@@ -89,25 +98,23 @@ class ResponseHelper
 
     /**
      * @param $source
-     * @param \ReflectionMethod $setter
      * @param \ReflectionProperty $property
      * @return \DateTimeInterface|null
      */
     private function getDateTimeValue(
         $source,
-        \ReflectionMethod $setter,
         \ReflectionProperty $property
     ): ?\DateTimeInterface {
-        $parameters = $setter->getParameters();
+        $date = false;
+        foreach ($this->availableDateTimeFormats as $dateTimeFormat) {
+            $date = \DateTime::createFromFormat($dateTimeFormat, $property->getValue($source));
 
-        if (!isset($parameters[1])) {
-            throw new ParameterNotFoundException('format');
+            if ($date !== false) {
+                break;
+            }
         }
 
-        $format = $parameters[1]->getDefaultValue();
-        $date = \DateTime::createFromFormat($format, $property->getValue($source));
-
-        if (!$date) {
+        if ($date === false) {
             return null;
         }
 

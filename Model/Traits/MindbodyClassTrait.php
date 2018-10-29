@@ -114,7 +114,7 @@ trait MindbodyClassTrait
     private $EndDateTime;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $LastModifiedDateTime;
 
@@ -416,11 +416,10 @@ trait MindbodyClassTrait
 
     /**
      * @param \DateTimeInterface $StartDateTime
-     * @param string $format
      */
-    public function setStartDateTime(\DateTimeInterface $StartDateTime, string $format = 'Y-m-d\TH:i:s'): void
+    public function setStartDateTime(\DateTimeInterface $StartDateTime): void
     {
-        $this->StartDateTime = $StartDateTime->format($format);
+        $this->StartDateTime = $StartDateTime->format(\DATE_ATOM);
     }
 
     /**
@@ -433,32 +432,25 @@ trait MindbodyClassTrait
 
     /**
      * @param \DateTimeInterface $EndDateTime
-     * @param string $format
      */
-    public function setEndDateTime(\DateTimeInterface $EndDateTime, string $format = 'Y-m-d\TH:i:s'): void
+    public function setEndDateTime(\DateTimeInterface $EndDateTime): void
     {
-        $this->EndDateTime = $EndDateTime->format($format);
+        $this->EndDateTime = $EndDateTime->format(\DATE_ATOM);
     }
 
     /**
-     * @return null|string
+     * @return string
      */
-    public function getLastModifiedDateTime(): ?string
+    public function getLastModifiedDateTime(): string
     {
         return $this->LastModifiedDateTime;
     }
 
     /**
-     * @param \DateTimeInterface|null $LastModifiedDateTime
-     * @param string $format
-     * TODO fix format
+     * @param \DateTimeInterface $LastModifiedDateTime
      */
-    public function setLastModifiedDateTime(
-        ?\DateTimeInterface $LastModifiedDateTime,
-        string $format = 'Y-m-d\TH:i:s'
-    ): void {
-        if (!is_null($LastModifiedDateTime)) {
-            $this->LastModifiedDateTime = $LastModifiedDateTime->format($format);
-        }
+    public function setLastModifiedDateTime(\DateTimeInterface $LastModifiedDateTime): void
+    {
+        $this->LastModifiedDateTime = $LastModifiedDateTime->format(\DATE_ATOM);
     }
 }

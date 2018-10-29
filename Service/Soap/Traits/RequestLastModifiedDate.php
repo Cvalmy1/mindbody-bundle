@@ -11,7 +11,7 @@ trait RequestLastModifiedDate
     /**
      * @var string
      */
-    private $lastModifiedDateFormat = 'd-m-Y';
+    private $lastModifiedDateFormat = 'Y-m-d';
 
     /**
      * @var string

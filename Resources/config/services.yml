@@ -25,6 +25,9 @@ services:
     Despark\MindbodyBundle\Model\MindbodyClass:
         shared: false
 
+    Despark\MindbodyBundle\Model\Classes\ClassDescription:
+        shared: false
+
     Despark\MindbodyBundle\Model\StaffInterface: '@Despark\MindbodyBundle\Model\Staff'
 
     Despark\MindbodyBundle\Model\MindbodyClassInterface: '@Despark\MindbodyBundle\Model\MindbodyClass'
@@ -44,4 +47,7 @@ services:
 
     Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetClasses:
         arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\ClassService\Parsers\GetClassesResponseParser']
+
+    Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetClassDescriptions:
+        arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\ClassService\Parsers\GetClassDescriptionsResponseParser']
 

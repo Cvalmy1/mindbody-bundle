@@ -11,7 +11,6 @@ use Despark\MindbodyBundle\Model\Classes\ClassDescription\SessionType;
  */
 class ClassDescription
 {
-
     /**
      * @var int
      */
@@ -36,6 +35,11 @@ class ClassDescription
      * @var \Despark\MindbodyBundle\Model\Classes\ClassDescription\SessionType
      */
     protected $SessionType;
+
+    /**
+     * @var string
+     */
+    protected $LastUpdated;
 
     /**
      * @return int
@@ -115,5 +119,21 @@ class ClassDescription
     public function setSessionType(SessionType $SessionType): void
     {
         $this->SessionType = $SessionType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastUpdated(): string
+    {
+        return $this->LastUpdated;
+    }
+
+    /**
+     * @param \DateTime $LastUpdated
+     */
+    public function setLastUpdated(\DateTime $LastUpdated): void
+    {
+        $this->LastUpdated = $LastUpdated->format(\DATE_ATOM);
     }
 }
