@@ -28,9 +28,14 @@ services:
     Despark\MindbodyBundle\Model\Classes\ClassDescription:
         shared: false
 
+    Despark\MindbodyBundle\Model\Client:
+        shared: false
+
     Despark\MindbodyBundle\Model\StaffInterface: '@Despark\MindbodyBundle\Model\Staff'
 
     Despark\MindbodyBundle\Model\MindbodyClassInterface: '@Despark\MindbodyBundle\Model\MindbodyClass'
+
+    Despark\MindbodyBundle\Model\ClientInterface: '@Despark\MindbodyBundle\Model\Client'
 
     # Soap Methods
     Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetEnrollments:
@@ -50,4 +55,7 @@ services:
 
     Despark\MindbodyBundle\Service\Soap\Services\ClassService\GetClassDescriptions:
         arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\ClassService\Parsers\GetClassDescriptionsResponseParser']
+
+    Despark\MindbodyBundle\Service\Soap\Services\ClientService\GetClients:
+        arguments: ['@Despark\MindbodyBundle\Service\SoapService', '@Despark\MindbodyBundle\Service\Soap\Services\ClientService\Parsers\GetClientsResponseParser']
 

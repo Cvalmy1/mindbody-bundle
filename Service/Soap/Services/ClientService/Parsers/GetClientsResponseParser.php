@@ -1,17 +1,17 @@
 <?php
 
-namespace Despark\MindbodyBundle\Service\Soap\Services\ClassService\Parsers;
+namespace Despark\MindbodyBundle\Service\Soap\Services\ClientService\Parsers;
 
-use Despark\MindbodyBundle\Model\MindbodyClassInterface;
+use Despark\MindbodyBundle\Model\ClientInterface;
 use Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseInterface;
 use Despark\MindbodyBundle\Service\Soap\Interfaces\ResponseParserInterface;
 use Despark\MindbodyBundle\Service\Soap\Response\ResponseHelper;
 use Illuminate\Support\Collection;
 
 /**
- * Class GetClassesResponseParser
+ * Class GetClientsResponseParser
  */
-class GetClassesResponseParser implements ResponseParserInterface
+class GetClientsResponseParser implements ResponseParserInterface
 {
     /**
      * @var \Despark\MindbodyBundle\Service\Soap\Response\ResponseHelper
@@ -19,19 +19,19 @@ class GetClassesResponseParser implements ResponseParserInterface
     private $helper;
 
     /**
-     * @var \Despark\MindbodyBundle\Model\MindbodyClassInterface
+     * @var \Despark\MindbodyBundle\Model\ClientInterface
      */
-    private $class;
+    private $client;
 
     /**
      * GetClassesResponseParser constructor.
      * @param \Despark\MindbodyBundle\Service\Soap\Response\ResponseHelper $helper
-     * @param \Despark\MindbodyBundle\Model\MindbodyClassInterface $class
+     * @param \Despark\MindbodyBundle\Model\ClientInterface $client
      */
-    public function __construct(ResponseHelper $helper, MindbodyClassInterface $class)
+    public function __construct(ResponseHelper $helper, ClientInterface $client)
     {
         $this->helper = $helper;
-        $this->class = $class;
+        $this->client = $client;
     }
 
     /**
@@ -45,7 +45,7 @@ class GetClassesResponseParser implements ResponseParserInterface
         $collection = new Collection();
 
         foreach ($items as $item) {
-            $collection->push($this->helper->hydrateObject($item, $this->class));
+            $collection->push($this->helper->hydrateObject($item, $this->client));
         }
 
         return $collection;

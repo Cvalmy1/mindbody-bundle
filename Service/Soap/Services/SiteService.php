@@ -15,12 +15,16 @@ class SiteService implements MindbodyServiceInterface
     use DefaultSoapServiceTrait;
 
     const SERVICE_NAME = 'SiteService';
+
     /**
      * @var \Despark\MindbodyBundle\Service\Soap\Services\SiteService\GetLocations
      */
     private $getLocations;
-
-
+    
+    /**
+     * SiteService constructor.
+     * @param \Despark\MindbodyBundle\Service\Soap\Services\SiteService\GetLocations $getLocations
+     */
     public function __construct(GetLocations $getLocations)
     {
         $this->getLocations = $getLocations;
